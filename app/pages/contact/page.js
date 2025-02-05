@@ -16,7 +16,7 @@ function Page() {
     console.log(firstname, lastname, email, message);
     try {
       const res = await axios.post(
-        'http://localhost:3000/api/userinfo', // Corrected URL
+        'https://hussain-portfolio-d6u7.vercel.app/api/userinfo', // Corrected URL
         { firstname, lastname, email, message },
         { headers: { 'Content-Type': 'application/json' } }
       );
