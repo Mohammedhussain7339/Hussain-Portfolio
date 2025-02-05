@@ -2,20 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* globals.css */
+.shad{
+  box-shadow: 0 0 5px white;
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+.hideeye{
+  display: none;
+}
+.showeye:hover>.hideeye{
+  display: block;
+  display: flex;
+}
+.red{
+  color:hotpink
+}
+*{
+  list-style: none;
+}
+/* Hides the scrollbar but keeps scrolling functional */
+/* Hide the scrollbar globally in Tailwind setup */
+@layer base {
+  .scrollbar-hidden {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer */
   }
-}
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
+  }
 }

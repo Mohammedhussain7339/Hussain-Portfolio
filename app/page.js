@@ -1,101 +1,133 @@
+'use client'
+import React, { useState } from "react";
 import Image from "next/image";
+import { MdOutlineEmail } from "react-icons/md";
+import { IoPhonePortraitOutline } from "react-icons/io5";
+import { MdOutlineCalendarMonth } from "react-icons/md";
+import { IoLocationOutline } from "react-icons/io5";
+import { FaInstagram } from "react-icons/fa6";
+import { FaLinkedinIn } from "react-icons/fa";
+import { FaFacebookF } from "react-icons/fa6";
+import { FaGithub } from "react-icons/fa";
+import Resume from "./pages/resume/page";
+import Blog from "./pages/blog/page";
+import Portfolio from "./pages/portfolio/page";
+import About from "./pages/about/page";
+import Contact from "./pages/contact/page";
+import avtar from "./../public/image/avatar.png";
 
-export default function Home() {
+function Page() {
+  const [activeIndex, setActiveIndex] = useState(0); // Set the active index
+
+  const icons = [
+    { icons: FaInstagram, path: "", textcolor: "pink" },
+    { icons: FaLinkedinIn, path: "", textcolor: "#0A66C2" },
+    { icons: FaFacebookF, path: "", textcolor: "#0865FE" },
+    { icons: FaGithub, path: "", textcolor: "gray" },
+  ];
+
+  const routes = [
+    { id: 0, name: "About" },
+    { id: 1, name: "Resume" },
+    { id: 2, name: "Portfolio" },
+    { id: 3, name: "Blog" },
+    { id: 4, name: "Contact" },
+  ];
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="w-full sm:p-2 h-screen scrollbar-hidden overflow-hidden text-white bg-black py-10 justify-center flex gap-3">
+      <aside className="rounded-xl w-[300px] h-full  bg-gray-900 scrollbar-hidden  overflow-scroll">
+        <div className="w-full flex flex-col items-center justify-center p-10">
+          <div className="w-[300px] flex flex-col items-center gap-3">
+            <div className="w-36 h-36 bg-gray-500 rounded-2xl flex items-center justify-center">
+              <Image alt="Avtar" priority src={avtar} width={100} />
+            </div>
+            <h1 className="text-2xl">Mohammed Hussain</h1>
+            <div className="bg-gray-300 text-center rounded-md cursor-pointer px-3">
+              Web Developer
+            </div>
+          </div>
+          <hr className="w-[250px] my-10" />
+          <div className="flex flex-col gap-6">
+            <div className="flex gap-5 items-center cursor-pointer">
+              <i className="text-2xl text-yellow-600">
+                <MdOutlineEmail />
+              </i>
+              <div>
+                <h5>Email</h5>
+                <h3>mohammedhussain7339@g...</h3>
+              </div>
+            </div>
+            <div className="flex gap-5 items-center cursor-pointer">
+              <i className="text-2xl text-yellow-600">
+                <IoPhonePortraitOutline />
+              </i>
+              <div>
+                <h5>Phone</h5>
+                <h3>+91-7339750916</h3>
+              </div>
+            </div>
+            <div className="flex gap-5 items-center cursor-pointer">
+              <i className="text-2xl text-yellow-600">
+                <MdOutlineCalendarMonth />
+              </i>
+              <div>
+                <h5>BIRTHDAY</h5>
+                <h3>December 14, 2004</h3>
+              </div>
+            </div>
+            <div className="flex gap-5 items-center cursor-pointer">
+              <i className="text-2xl text-yellow-600">
+                <IoLocationOutline />
+              </i>
+              <div>
+                <h5>Location</h5>
+                <h3>Jaipur, Rajasthan</h3>
+                <h3>India</h3>
+              </div>
+            </div>
+            <div>
+              <ul className="flex items-center justify-center gap-5 text-2xl cursor-pointer">
+                {icons.map((item, index) => (
+                  <li
+                    key={index}
+                    style={{ color: item.textcolor }}
+                    className="hover:scale-110 transition-transform p-1 shadow-md shadow-white rounded-lg"
+                  >
+                    <item.icons />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </aside>
+      <main className="w-[70%] h-[100%] bg-gray-700 rounded-xl relative scrollbar-hidden  overflow-scroll">
+        <nav className="min-w-[50%] z-10 h-16 bg-gray-500 right-[107px] rounded-tr-xl rounded-bl-xl xl:fixed sticky">
+          <ul className="flex justify-evenly items-center h-full">
+            {routes.map((item, index) => (
+              <li
+                key={index}
+                className={`cursor-pointer ${
+                  activeIndex === index ? "text-yellow-300 underline " : "text-white"
+                }`} // Highlight active route
+                onClick={() => setActiveIndex(index)} // Update activeIndex
+              >
+                {item.name}
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <div>
+          {activeIndex === 0 && <About />}
+          {activeIndex === 1 && <Resume />}
+          {activeIndex === 2 && <Portfolio />}
+          {activeIndex === 3 && <Blog />}
+          {activeIndex === 4 && <Contact />}
         </div>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
   );
 }
+
+export default Page;
