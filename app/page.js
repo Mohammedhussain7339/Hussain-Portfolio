@@ -9,6 +9,7 @@ import { FaInstagram } from "react-icons/fa6";
 import { FaLinkedinIn } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa6";
 import { FaGithub } from "react-icons/fa";
+import { FaBars, FaTimes } from "react-icons/fa"; // Import hamburger and close icons
 import Resume from "./pages/resume/page";
 import Blog from "./pages/blog/page";
 import Portfolio from "./pages/portfolio/page";
@@ -18,6 +19,7 @@ import avtar from "./../public/image/avatar.png";
 
 function Page() {
   const [activeIndex, setActiveIndex] = useState(0); // Set the active index
+  const [menuOpen, setMenuOpen] = useState(false); // For toggling menu
 
   const icons = [
     { icons: FaInstagram, path: "", textcolor: "pink" },
@@ -35,9 +37,42 @@ function Page() {
   ];
 
   return (
-    <div className="w-full sm:p-2 h-screen scrollbar-hidden overflow-hidden text-white bg-black py-10 justify-center flex gap-3">
-      <aside className="rounded-xl w-[300px] h-full  bg-gray-900 scrollbar-hidden  overflow-scroll">
-        <div className="w-full flex flex-col items-center justify-center p-10">
+    <div className="w-full sm:p-2 h-screen scrollbar-hidden sm:overflow-hidden text-white bg-black sm:py-10 justify-center sm:flex gap-3">
+      {/* Mobile Navbar - keep this outside the <aside> */}
+<nav className="w-full sm:hidden fixed top-0 z-50 bg-[rgba(0,0,0,0.6)] ">
+  <div className="flex justify-between items-center p-4">
+    <h1 className="text-xl font-bold">Menu</h1>
+    <button onClick={() => setMenuOpen(!menuOpen)} className="text-white text-2xl">
+      {menuOpen ? <FaTimes /> : <FaBars />}
+    </button>
+  </div>
+
+  <ul
+    className={`flex-col absolute top-16 w-full left-0 bg-gray-700 z-20 transition-all duration-300 ease-in-out ${
+      menuOpen ? "flex" : "hidden"
+    }`}
+  >
+    {routes.map((item, index) => (
+      <li
+        key={index}
+        className={`cursor-pointer px-6 py-3 text-center ${
+          activeIndex === index ? "text-yellow-300 underline" : "text-white"
+        }`}
+        onClick={() => {
+          setActiveIndex(index);
+          setMenuOpen(false);
+        }}
+      >
+        {item.name}
+      </li>
+    ))}
+  </ul>
+</nav>
+
+      <aside className="sm:rounded-xl sm:w-[300px]  h-full  bg-gray-900 scrollbar-hidden  overflow-scroll">
+
+
+        <div className="w-full sm:my-0 my-8 flex flex-col items-center justify-center  p-10">
           <div className="w-[300px] flex flex-col items-center gap-3">
             <div className="w-36 h-36 bg-gray-500 rounded-2xl flex items-center justify-center">
               <Image alt="Avtar" priority src={avtar} width={100} />
@@ -102,8 +137,8 @@ function Page() {
           </div>
         </div>
       </aside>
-      <main className="w-[70%] h-[100%] bg-gray-700 rounded-xl relative scrollbar-hidden  overflow-scroll">
-        <nav className="min-w-[50%] z-10 h-16 bg-gray-500 right-[107px] rounded-tr-xl rounded-bl-xl xl:fixed sticky">
+      <main className="sm:w-[70%] w-full h-[100%] bg-gray-700 sm:rounded-xl relative scrollbar-hidden  overflow-scroll">
+        <nav className="min-w-[50%] z-10 h-16 bg-gray-500 right-[107px] sm:visible invisible rounded-tr-xl rounded-bl-xl xl:fixed sticky">
           <ul className="flex justify-evenly items-center h-full">
             {routes.map((item, index) => (
               <li

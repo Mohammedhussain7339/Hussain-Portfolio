@@ -42,7 +42,7 @@ function Resume() {
   const [activeCategory, setActiveCategory] = useState('Frontend'); // State to track active category
 
   return (
-    <div className="m-6">
+    <div className="m-6 ">
       <h1 className="text-3xl">Resume</h1>
       <hr className="w-7 my-1 h-[2px] bg-yellow-300" />
 
@@ -57,24 +57,24 @@ function Resume() {
           <div className="relative bg-orange-400 right-1 top-24 w-2 h-2 rounded-full cursor-pointer"></div>
           <div className="relative bg-orange-400  right-1 top-48 w-2 h-2 rounded-full cursor-pointer"></div>
         </div>
-        <div>
+        <div className='  w-full '>
             <div className="mb-4 ">
               <h1>JECRC UNIVERSITY</h1>
               <h3 className="mx-1 text-gray-400 text-sm">2024 - 2026</h3>
-              <p className="mx-1 text-gray-400 text-[14px] w-[600px] sm:w-[420px]">
+              <p className="mx-1 text-gray-400 text-[14px] sm:w-[600px] ">
               "I am a student of JECRC University, pursuing MCA with a specialization in Full Stack Web Development with Cloud Computing through IBM."
 </p>
             </div>
             <div className="mb-4">
               <h1>MDSU UNIVERSITY</h1>
               <h3 className="mx-1 text-gray-400 text-sm">2021 - 2024</h3>
-              <p className="mx-1 text-gray-400 text-[14px] w-[600px] sm:w-[420px]">
+              <p className="mx-1 text-gray-400 text-[14px] sm:w-[600px] ">
               "I completed my graduation in BCA from MDSU University, under the branch of Kuchaman College."</p>
             </div>
             <div className="mb-4">
               <h1>Samrat Prithviraj Sr Sec School</h1>
               <h3 className="mx-1 text-gray-400 text-sm">2021</h3>
-              <p className="mx-1 text-gray-400 text-[14px] w-[600px] sm:w-[420px]">
+              <p className="mx-1 text-gray-400 text-[14px] sm:w-[600px] ">
               "I completed my secondary education from Samrat Prithviraj Chouhan School, Makrana."</p>
             </div>
         </div>
