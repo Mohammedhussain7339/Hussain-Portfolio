@@ -138,7 +138,7 @@ function Page() {
         </div>
       </aside>
       <main className="sm:w-[70%] w-full h-[100%] bg-gray-700 sm:rounded-xl relative scrollbar-hidden  overflow-scroll">
-        <nav className="min-w-[50%] z-10 h-16 bg-gray-500 right-[107px] sm:visible invisible rounded-tr-xl rounded-bl-xl xl:fixed sticky">
+        <nav className="min-w-[50%] z-10 h-16 bg-gray-500 right-[80px] sm:visible invisible rounded-tr-xl rounded-bl-xl xl:fixed sticky">
           <ul className="flex justify-evenly items-center h-full">
             {routes.map((item, index) => (
               <li
